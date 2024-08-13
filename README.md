@@ -37,7 +37,7 @@ of the tile-providers before downloading!
 To start using latest released version, just run:
 
 ```
-$ go install github.com/superboomer/maptiled@latest
+$ go install github.com/superboomer/maptiled/cmd/maptiled@latest
 ```
 
 # **Docker Deploy**
