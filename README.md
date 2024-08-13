@@ -5,7 +5,7 @@ of the tile-providers before downloading!
 
 ---
 <div align="center">
-  <img class="logo" src="https://raw.githubusercontent.com/superboomer/maptiled/master/assets/logo.png" width="128px" height="128px" alt="logo"/>
+  <img class="logo" src="https://raw.githubusercontent.com/superboomer/maptiled/master/assets/logo.png" width="340px" height="256px" alt="logo"/>
   <br>
   <br>
   <b>maptiled</b>
