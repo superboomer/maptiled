@@ -110,6 +110,10 @@ func TestNewDownloader(t *testing.T) {
 	// Test case: Error during directory creation
 	_, err = NewDownloader(server.URL, "", false)
 	assert.ErrorContains(t, err, "failed to create save directory")
+
+	// Test case: Error during send request to unsupported url
+	_, err = NewDownloader("ftp://localhost", "/test/dir", false)
+	assert.ErrorContains(t, err, "when sending request to the server")
 }
 
 func TestGetAllProviders(t *testing.T) {
