@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
     environment:
       - API_PORT=8081
-      - SCHEMA=https://raw.githubusercontent.com/superboomer/map-tile-provider/master/example/providers.json
+      - SCHEMA=https://raw.githubusercontent.com/superboomer/maptile/master/example/providers.json
 
   maptiled:
     image: ghcr.io/superboomer/maptiled:latest
