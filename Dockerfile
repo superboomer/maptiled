@@ -17,7 +17,7 @@ RUN \
 
 FROM scratch
 
-COPY --from=backend /build/maptp /srv/maptiled
+COPY --from=backend /build/maptiled /srv/maptiled
 COPY --from=backend /usr/share/zoneinfo /usr/share/zoneinfo
 COPY --from=backend /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
