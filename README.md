@@ -8,7 +8,7 @@ of the tile-providers before downloading!
   <img class="logo" src="https://raw.githubusercontent.com/superboomer/maptiled/master/assets/logo.png" width="340px" height="256px" alt="logo"/>
   <br>
   <br>
-  <b>maptiled</b>
+  <b>maptileD</b>
   <br>
   <br>
 
@@ -21,7 +21,7 @@ of the tile-providers before downloading!
 ---
 #### Options
 
- ***maptiled*** supports the following command-line options:
+ ***maptileD*** supports the following command-line options:
 
 - `-s`, `--save-path`: define where maptiled save tiles.
 - `-p`, `--provider-url`: url where maptile serving.
@@ -63,16 +63,24 @@ version: '3.7'
 
 services:
 
-  map-tile-provider:
-    image: ghcr.io/superboomer/maptiled:latest
-    container_name: map-tile-provider
+  maptile:
+    image: ghcr.io/superboomer/maptile:latest
+    container_name: maptile
     restart: unless-stopped
     environment:
-      - PROVIDER_URL=http://example.com
-      - POINTS=./example_points.json
-    ports:
-      - "8080:8080"
-```
+      - API_PORT=8081
+      - SCHEMA=https://raw.githubusercontent.com/superboomer/map-tile-provider/master/example/providers.json
 
+  maptiled:
+    image: ghcr.io/superboomer/maptiled:latest
+    container_name: maptiled
+    volumes:
+      - "./result:/result/"
+    environment:
+      - PROVIDER_URL=http://maptile:8081
+      - POINTS=./example_points.json
+
+```
+> Full example [here](https://github.com/superboomer/maptiled/blob/master/example)
 ***
 

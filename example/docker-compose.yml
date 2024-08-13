@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+
+  maptile:
+    image: ghcr.io/superboomer/maptile:latest
+    container_name: maptile
+    restart: unless-stopped
+    environment:
+      - API_PORT=8081
+      - SCHEMA=https://raw.githubusercontent.com/superboomer/map-tile-provider/master/example/providers.json
+
+  maptiled:
+    image: ghcr.io/superboomer/maptiled:latest
+    container_name: maptiled
+    volumes:
+      - "./result:/result/"
+    environment:
+      - PROVIDER_URL=http://maptile:8081
+      - POINTS=./example_points.json
