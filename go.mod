@@ -1,4 +1,4 @@
-module github.com/superboomer/mtiled
+module github.com/superboomer/maptiled
 
 go 1.22.4
 

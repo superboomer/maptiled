@@ -7,7 +7,7 @@ import (
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/superboomer/mtiled/internal/options"
+	"github.com/superboomer/maptiled/internal/options"
 )
 
 // TUI create service and start render cli

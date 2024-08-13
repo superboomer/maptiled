@@ -3,9 +3,9 @@ package commands
 import (
 	"fmt"
 
-	"github.com/superboomer/mtiled/internal/downloader"
-	"github.com/superboomer/mtiled/internal/loader"
-	"github.com/superboomer/mtiled/internal/options"
+	"github.com/superboomer/maptiled/internal/downloader"
+	"github.com/superboomer/maptiled/internal/loader"
+	"github.com/superboomer/maptiled/internal/options"
 )
 
 // service contains all func and data for downloading tiles

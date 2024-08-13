@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/superboomer/mtiled/internal/loader"
+	"github.com/superboomer/maptiled/internal/loader"
 )
 
 // Downloader is a struct for api calls and data save

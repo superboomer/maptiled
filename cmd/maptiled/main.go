@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/superboomer/mtiled/internal/commands"
-	"github.com/superboomer/mtiled/internal/options"
+	"github.com/superboomer/maptiled/internal/commands"
+	"github.com/superboomer/maptiled/internal/options"
 	"github.com/umputun/go-flags"
 )
 

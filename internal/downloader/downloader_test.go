@@ -10,7 +10,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/superboomer/mtiled/internal/loader"
+	"github.com/superboomer/maptiled/internal/loader"
 )
 
 // TestDownload tests the Download function
