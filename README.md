@@ -5,7 +5,7 @@ of the tile-providers before downloading!
 
 ---
 <div align="center">
-  <img class="logo" src="https://raw.githubusercontent.com/superboomer/map-tile-provider/master/assets/logo.png" width="128px" height="128px" alt="logo"/>
+  <img class="logo" src="https://raw.githubusercontent.com/superboomer/maptiled/master/assets/logo.png" width="128px" height="128px" alt="logo"/>
   <br>
   <br>
   <b>maptiled</b>
@@ -16,7 +16,7 @@ of the tile-providers before downloading!
 </div>
 
 
- Easy CLI tool to download specified tiles by [maptile](https://github.com/superboomer/maptile/)
+ Easy CLI tool to download specified tiles for HTTP API [maptile](https://github.com/superboomer/maptile/).
 
 ---
 #### Options
