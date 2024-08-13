@@ -10,6 +10,7 @@ import (
 	"github.com/superboomer/mtiled/internal/options"
 )
 
+// TUI create service and start render cli
 func TUI(opts *options.Opts) error {
 	service, err := createService(opts)
 	if err != nil {
@@ -23,6 +24,7 @@ func TUI(opts *options.Opts) error {
 	return nil
 }
 
+// render creates all nesesary thins for bubbletea and start tea program
 func render(service *service) error {
 
 	p := progress.New(

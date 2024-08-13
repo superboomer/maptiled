@@ -7,7 +7,6 @@ require (
 	github.com/charmbracelet/bubbletea v0.26.6
 	github.com/charmbracelet/lipgloss v0.12.1
 	github.com/umputun/go-flags v1.5.1
-	golang.org/x/exp v0.0.0-20220909182711-5c715a9e8561
 )
 
 require (

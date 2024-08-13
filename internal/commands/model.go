@@ -3,14 +3,12 @@ package commands
 import (
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/charmbracelet/bubbles/progress"
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/superboomer/mtiled/internal/downloader"
-	"golang.org/x/exp/rand"
 )
 
 var (
@@ -33,15 +31,18 @@ type model struct {
 	done          bool
 }
 
+// Init starts loading files
 func (m model) Init() tea.Cmd {
 	return tea.Batch(m.downloadAndSave(), m.spinner.Tick)
 }
 
+// downloadTileMsg msg for Update
 type downloadedTileMsg struct {
 	name string
 	err  error
 }
 
+// downloadAndSave download and save file/ send Msg for Update
 func (m *model) downloadAndSave() tea.Cmd {
 	point := m.service.points[m.index]
 	provider := m.service.providers[m.providerIndex]
@@ -54,13 +55,12 @@ func (m *model) downloadAndSave() tea.Cmd {
 			Point:    &point,
 		})
 
-	d := time.Microsecond * time.Duration(rand.Intn(3)) //nolint:gosec
-
-	return tea.Tick(d, func(t time.Time) tea.Msg {
-		return downloadedTileMsg(downloadedTileMsg{name: fmt.Sprintf("%s [%s] [%s]", point.Name, point.ID, provider), err: dErr})
-	})
+	return func() tea.Msg {
+		return downloadedTileMsg{name: fmt.Sprintf("%s [%s] [%s]", point.Name, point.ID, provider), err: dErr}
+	}
 }
 
+// Update update cli by specified *Msg
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
@@ -126,6 +126,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
+// View draw cli
 func (m model) View() string {
 	n := len(m.service.points) * len(m.service.providers)
 	w := lipgloss.Width(fmt.Sprintf("%d", n))

@@ -18,11 +18,11 @@ func TestLoad_SuccessfulLoad(t *testing.T) {
 		{"lat": 40.712776, "long": -74.005974, "name": "New York", "id": "NYC"},
 		{"lat": 34.052235, "long": -118.243683, "name": "Los Angeles", "id": "LA"}
 	]`)
-	if _, err := tmpfile.Write(jsonContent); err != nil {
-		t.Fatal(err)
+	if _, wErr := tmpfile.Write(jsonContent); wErr != nil {
+		t.Fatal(wErr)
 	}
-	if err := tmpfile.Close(); err != nil {
-		t.Fatal(err)
+	if cErr := tmpfile.Close(); cErr != nil {
+		t.Fatal(cErr)
 	}
 
 	// Use DataLoader to load the data
@@ -59,11 +59,11 @@ func TestLoad_InvalidJSON(t *testing.T) {
 	defer os.Remove(tmpfile.Name()) // Clean up
 
 	// Write invalid JSON to the temporary file
-	if _, err := tmpfile.Write([]byte("{invalid json}")); err != nil {
-		t.Fatal(err)
+	if _, wErr := tmpfile.WriteString("{invalid json}"); wErr != nil {
+		t.Fatal(wErr)
 	}
-	if err := tmpfile.Close(); err != nil {
-		t.Fatal(err)
+	if cErr := tmpfile.Close(); cErr != nil {
+		t.Fatal(cErr)
 	}
 
 	// Use DataLoader to load the data

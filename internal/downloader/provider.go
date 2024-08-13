@@ -7,14 +7,17 @@ import (
 	"net/http"
 )
 
+// provider contains data which returns from maptile api about providers
 type provider struct {
 	Name    string `json:"name"`
 	Key     string `json:"key"`
 	MaxZoom int    `json:"max_zoom"`
 }
 
+// providerList is a map of providers
 type providerList map[string]provider
 
+// get return specified by name provider
 func (l providerList) get(name string) (*provider, error) {
 	p, ok := l[name]
 	if !ok {
@@ -24,6 +27,7 @@ func (l providerList) get(name string) (*provider, error) {
 	return &p, nil
 }
 
+// getProviders load provider list from maptile api and parse it
 func (d *Downloader) getProviders() (*providerList, error) {
 	req, err := http.NewRequest(
 		http.MethodGet,

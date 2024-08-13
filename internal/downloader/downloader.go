@@ -10,6 +10,7 @@ import (
 	"github.com/superboomer/mtiled/internal/loader"
 )
 
+// Downloader is a struct for api calls and data save
 type Downloader struct {
 	url        string
 	savePath   string
@@ -20,6 +21,7 @@ type Downloader struct {
 	setMax bool
 }
 
+// NewDownloader create new Download, load all providers
 func NewDownloader(url, savePath string, setMax bool) (*Downloader, error) {
 	downloader := Downloader{url: url, savePath: savePath, setMax: setMax, httpClient: http.DefaultClient}
 
@@ -38,6 +40,7 @@ func NewDownloader(url, savePath string, setMax bool) (*Downloader, error) {
 	return &downloader, nil
 }
 
+// GetAllProviders load from list and return as string slice
 func (d *Downloader) GetAllProviders() []string {
 	var providers = []string{}
 	if d.list == nil {
@@ -51,6 +54,7 @@ func (d *Downloader) GetAllProviders() []string {
 	return providers
 }
 
+// DownloadRequest struct which contains all specified data for download tile
 type DownloadRequest struct {
 	Provider string
 	Zoom     int
@@ -58,6 +62,7 @@ type DownloadRequest struct {
 	Point    *loader.Point
 }
 
+// Download download and save specified by DownloadRequest tile
 func (d *Downloader) Download(r *DownloadRequest) error {
 
 	req, err := d.createRequest(r)
@@ -82,6 +87,7 @@ func (d *Downloader) Download(r *DownloadRequest) error {
 	return d.saveImage(r.Point, r.Provider, img)
 }
 
+// createRequest build http req
 func (d *Downloader) createRequest(r *DownloadRequest) (*http.Request, error) {
 
 	provider, err := d.list.get(r.Provider)

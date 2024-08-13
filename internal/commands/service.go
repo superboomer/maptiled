@@ -8,6 +8,7 @@ import (
 	"github.com/superboomer/mtiled/internal/options"
 )
 
+// service contains all func and data for downloading tiles
 type service struct {
 	downloader *downloader.Downloader
 	providers  []string
@@ -16,6 +17,7 @@ type service struct {
 	side       int
 }
 
+// createService load data from points.json, create new downloader and download providers
 func createService(opts *options.Opts) (*service, error) {
 
 	l := loader.DataLoader{Path: opts.Points}
@@ -25,27 +27,26 @@ func createService(opts *options.Opts) (*service, error) {
 		return nil, fmt.Errorf("error occurred when load points: %w", err)
 	}
 
-	downloader, err := downloader.NewDownloader(opts.URL, opts.SavePath, opts.SetMax)
+	d, err := downloader.NewDownloader(opts.URL, opts.SavePath, opts.SetMax)
 	if err != nil {
 		return nil, fmt.Errorf("error occurred when init downloader: %w", err)
 	}
 
 	var s = &service{
-		downloader: downloader,
+		downloader: d,
 		points:     points,
 		zoom:       opts.Zoom,
 		side:       opts.Side,
 	}
 
 	if len(opts.Providers) == 0 {
-		s.providers = downloader.GetAllProviders()
+		s.providers = d.GetAllProviders()
 	} else {
 		for _, p := range opts.Providers {
-		CHECK:
-			for _, a := range downloader.GetAllProviders() {
+			for _, a := range d.GetAllProviders() {
 				if a == p {
 					s.providers = append(s.providers, a)
-					break CHECK
+					break
 				}
 			}
 		}

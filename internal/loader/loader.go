@@ -6,10 +6,12 @@ import (
 	"os"
 )
 
+// DataLoader is a struct for load points.json
 type DataLoader struct {
 	Path string
 }
 
+// Point represent point data
 type Point struct {
 	Lat  float64 `json:"lat"`
 	Long float64 `json:"long"`
@@ -17,6 +19,7 @@ type Point struct {
 	ID   string  `json:"id"`
 }
 
+// Load read points.json file and unmarshal
 func (l *DataLoader) Load() ([]Point, error) {
 	byt, err := os.ReadFile(l.Path)
 	if err != nil {
