@@ -31,7 +31,7 @@ of the tile-providers before downloading!
 - `--providers`: download specified providers. (only if maptile support them).
 - `--points`: path for a points.json file.
 
-> All environment variables are available in [source code](https://github.com/superboomer/maptiled/blob/master/internal/options/opt.go)
+> All environment/command-line options are available in [source code](https://github.com/superboomer/maptiled/blob/master/internal/options/opt.go)
 ***
 # **Install**
 To start using latest released version, just run:
@@ -40,6 +40,21 @@ To start using latest released version, just run:
 $ go install github.com/superboomer/maptiled/cmd/maptiled@latest
 ```
 
+***
+# **Example**
+First of all you need create points.json. Example:
+
+```JSON
+[
+        {
+            "lat": 86.920691,
+            "long": 27.989750,
+            "name": "Mount Everest",
+            "id": "everest"
+        }
+]
+```
+***
 # **Docker Deploy**
 
 You can easly deploy it via docker. Basic ***docker-compose.yml*** may look like this:
