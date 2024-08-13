@@ -53,11 +53,11 @@ services:
     container_name: map-tile-provider
     restart: unless-stopped
     environment:
-      - SCHEMA=https://raw.githubusercontent.com/superboomer/map-tile-provider/master/example/providers.json
+      - PROVIDER_URL=http://example.com
+      - POINTS=./example_points.json
     ports:
       - "8080:8080"
 ```
-> Full example [here](https://github.com/superboomer/maptiled/blob/master/example)
 
 ***
 
