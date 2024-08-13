@@ -13,7 +13,7 @@ RUN apk add --no-cache --update git tzdata ca-certificates
 RUN \
     version=${VERSION}-$(date +%Y%m%dT%H:%M:%S) && \
     echo "version=$version" && \
-    cd cmd/mtiled && go build -o /build/maptiled -ldflags "-X 'main.Version=${version}'"
+    cd cmd/maptiled && go build -o /build/maptiled -ldflags "-X 'main.Version=${version}'"
 
 FROM scratch
 
