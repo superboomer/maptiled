@@ -3,7 +3,7 @@ module github.com/superboomer/maptiled
 go 1.22.4
 
 require (
-	github.com/charmbracelet/bubbles v0.19.0
+	github.com/charmbracelet/bubbles v0.20.0
 	github.com/charmbracelet/bubbletea v1.1.0
 	github.com/charmbracelet/lipgloss v0.13.0
 	github.com/umputun/go-flags v1.5.1
